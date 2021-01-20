@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:mvc="http://www.springframework.org/schema/mvc"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context https://www.springframework.org/schema/context/spring-context.xsd http://www.springframework.org/schema/mvc https://www.springframework.org/schema/mvc/spring-mvc.xsd">
+    <!--开启注解扫描，只扫描Controller注解-->
+    <context:component-scan base-package="com.nifei">
+        <!--只扫描 @Controller注解-->
+        <context:include-filter type="annotation" expression="org.springframework.stereotype.Controller" />
+    </context:component-scan>
+
+
+    <!--thymeleaf模板解析器-->
+    <bean id="templateResolver" class="org.thymeleaf.spring4.templateresolver.SpringResourceTemplateResolver">
+        <!--前缀配置-->
+        <property name="prefix" value="/WEB-INF/templates/"></property>
+        <!--后缀配置-->
+        <property name="suffix" value=".html"></property>
+        <!--模板类型-->
+        <property name="templateMode" value="HTML"></property>
+        <!--不使用缓存-->
+        <property name="cacheable" value="false"></property>
+        <!--编码类型-->
+        <property name="characterEncoding" value="UTF-8"></property>
+    </bean>
+
+    <!--模板引擎配置-->
+    <bean id="templateEngine" class="org.thymeleaf.spring4.SpringTemplateEngine">
+        <property name="templateResolver" ref="templateResolver"></property>
+    </bean>
+
+    <!--视图处理器-->
+    <bean class="org.thymeleaf.spring4.view.ThymeleafViewResolver">
+        <property name="templateEngine" ref="templateEngine"></property>
+        <property name="characterEncoding" value="UTF-8"></property>
+    </bean>
+    <!--配置文件上传解析器-->
+    <bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+        <!--设置上传文件的最大值（单位:字节）-->
+        <property name="maxUploadSize" value="1048576"/>
+        <property name="defaultEncoding" value="utf-8"/>
+    </bean>
+
+    <!--放行静态资源-->
+    <mvc:default-servlet-handler/>
+
+    <!--开启mvc注解驱动-->
+    <mvc:annotation-driven/>
+</beans>

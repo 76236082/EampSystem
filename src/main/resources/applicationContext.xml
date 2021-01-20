@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context" xmlns:tx="http://www.springframework.org/schema/tx"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context https://www.springframework.org/schema/context/spring-context.xsd http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd">
+
+    <!--1.开启包扫描，但不扫描controller包-->
+    <context:component-scan base-package="com.nifei"/>
+    <!--2.导入数据库连接配置文件db.properties-->
+    <context:property-placeholder file-encoding="UTF-8" location="classpath*:db.properties"/>
+    <!--3.配置数据源-->
+    <bean id="druidDataSource" class="com.alibaba.druid.pool.DruidDataSource">
+        <property name="driverClassName" value="${jdbc.driverClassName}"/>
+        <property name="url" value="${jdbc.url}"/>
+        <property name="username" value="${jdbc.username}"/>
+        <property name="password" value="${jdbc.password}"/>
+    </bean>
+
+    <!--4.配置SqlsessionFactoryBean-->
+    <bean id="sessionFactory" class="com.baomidou.mybatisplus.extension.spring.MybatisSqlSessionFactoryBean">
+    <!-- 配置数据源属性-->
+        <property name="dataSource" ref="druidDataSource"/>
+    <!-- 配置包别名-->
+        <property name="typeAliasesPackage" value="com.nifei.bean"/>
+    <!-- 配置mapper.xml路径-->
+        <property name="mapperLocations" value="classpath*:mappers/*.xml"/>
+    </bean>
+
+    <bean id="countSqlParser" class="com.baomidou.mybatisplus.extension.plugins.pagination.optimize.JsqlParserCountOptimize">
+        <!-- 设置为 true 可以优化部分 left join 的sql -->
+        <property name="optimizeJoin" value="true"/>
+    </bean>
+
+    <!--5.指定mapper路径-->
+    <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+        <property name="basePackage" value="com.nifei.mapper"/>
+    </bean>
+
+    <!--6.配置事务管理器-->
+    <bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+        <property name="dataSource" ref="druidDataSource"/>
+    </bean>
+
+    <!--7.开启事务注解驱动-->
+    <tx:annotation-driven/>
+</beans>
