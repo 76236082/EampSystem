@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
-<title>首页 - 光年(部门列表)OA管理系统</title>
+<title>首页 - 光年(学员列表)OA管理系统</title>
 <link rel="icon" href="/favicon.ico" type="image/ico">
 <meta name="keywords" content="LightYear,光年,后台模板,后台管理系统,光年HTML模板">
 <meta name="description" content="LightYear是一个基于Bootstrap v3.3.7的后台管理系统的HTML模板。">
@@ -37,24 +37,76 @@
 					  <table class="table">
 						<thead>
 						  <tr>
-							<th>序号</th>
-							<th>部门名称</th>
-							<th>部门人数</th>
-							<th>成立时间</th>
+							<th>学号</th>
+							<th>学员名称</th>
+							<th>所在班级</th>
+							<th>性别</th>
+							<th>手机号</th>
+							<th>邮箱</th>
+							<th>QQ</th>
+							<th>毕业院校</th>
+							<th>学历</th>
+							<th>出生日期</th>
+							<th>入学日期</th>
 							<th colspan="2" class="text-center">操作</th>
 						  </tr>
 						</thead>
 						<tbody>
-						  <tr th:each="depart,departStat:${page.records}">
-							<th th:text="${depart.id}">2</th>
-							<td th:text="${depart.name}">人事部</td>
-							<td th:text="${depart.count}">人事部</td>
-							<td th:text="${depart.createtime}">2018-12-12</td>
+						  <tr>
+							<th>1001</th>
+							<td>李雷</td>
+							<td>BK-NZ-JavaEE1901</td>
+							<td>男</td>
+							<td>15269587458</td>
+							<td>hd1611756908@163.com</td>
+							<td>1611756908</td>
+							<th>东北石油大学</th>
+							<th>本科</th>
+							<td>1990-05-28</td>
+							<td>2019-12-12</td>
 							<td class="text-right">
-								<a  class="btn btn-w-xs btn-round btn-info" th:href="|javascript:deletedepart(${depart.id});|">删除</a>
+								<a onclick="if(confirm('是否删除')){return true;}else{return false;}" class="btn btn-w-xs btn-round btn-info" href="#">删除</a>
 							</td>
 							<td class="text-left">
-								<a class="btn btn-w-xs btn-round btn-info" th:href="|/depart/${depart.id}|">更新</a>
+								<a class="btn btn-w-xs btn-round btn-info" href="role_update.html">更新</a>
+							</td>
+						  </tr>
+						  <tr>
+							<th>1001</th>
+							<td>李雷</td>
+							<td>BK-NZ-JavaEE1901</td>
+							<td>男</td>
+							<td>15269587458</td>
+							<td>hd1611756908@163.com</td>
+							<td>1611756908</td>
+							<th>东北石油大学</th>
+							<th>本科</th>
+							<td>1990-05-28</td>
+							<td>2019-12-12</td>
+							<td class="text-right">
+								<a onclick="if(confirm('是否删除')){return true;}else{return false;}" class="btn btn-w-xs btn-round btn-info" href="#">删除</a>
+							</td>
+							<td class="text-left">
+								<a class="btn btn-w-xs btn-round btn-info" href="role_update.html">更新</a>
+							</td>
+						  </tr>
+						  <tr>
+							<th>1001</th>
+							<td>李雷</td>
+							<td>BK-NZ-JavaEE1901</td>
+							<td>男</td>
+							<td>15269587458</td>
+							<td>hd1611756908@163.com</td>
+							<td>1611756908</td>
+							<th>东北石油大学</th>
+							<th>本科</th>
+							<td>1990-05-28</td>
+							<td>2019-12-12</td>
+							<td class="text-right">
+								<a onclick="if(confirm('是否删除')){return true;}else{return false;}" class="btn btn-w-xs btn-round btn-info" href="#">删除</a>
+							</td>
+							<td class="text-left">
+								<a class="btn btn-w-xs btn-round btn-info" href="role_update.html">更新</a>
 							</td>
 						  </tr>
 						</tbody>
@@ -67,19 +119,21 @@
 		<!-- 内容区结束 -->
 		<div class="row">
 			<div class="col-lg-4 text-left">
-				<a class="btn btn-info" href="/page_dept_add">添加部门</a>
+				<a class="btn btn-info" href="stu_add.html">添加学生</a>
 			</div>
 			<div class="col-lg-4 text-center">
 				<nav>
-				  <ul class="pagination" >
-					<li th:if="${page.hasPrevious()}" >
-					  <a th:href="@{'/depart/list/'+${page.current-1}+'/'+${page.size}}">
+				  <ul class="pagination">
+					<li>
+					  <a href="#!">
 						<span><i class="mdi mdi-chevron-left"></i></span>
 					  </a>
 					</li>
-					<li th:each="num:${pageNav}" th:class="${num==page.current?'active':''}"><a th:text="${num}" th:href="@{'/depart/list/'+${num}+'/'+${page.size}}">1</a></li>
-					<li th:if="${page.hasNext()}">
-					  <a th:href="@{'/depart/list/'+${page.current+1}+'/'+${page.size}}">
+					<li class="active"><a href="#">1</a></li>
+					<li><a href="#!">2</a></li>
+					<li><a href="#!">3</a></li>
+					<li>
+					  <a href="#!">
 						<span><i class="mdi mdi-chevron-right"></i></span>
 					  </a>
 					</li>
@@ -104,15 +158,7 @@
 
 <!--图表插件-->
 <script type="text/javascript" src="/js/Chart.js"></script>
-<!--对话框-->
-<script src="/js/jconfirm/jquery-confirm.min.js"></script>
-<script type="text/javascript" src="/js/main.min.js"></script>
-<!--消息提示-->
-<script src="/js/bootstrap-notify.min.js"></script>
-<script type="text/javascript" src="/js/lightyear.js"></script>
-<script type="text/javascript" src="/js/main.min.js"></script>
 <script type="text/javascript">
-
 $(document).ready(function(e) {
     var $dashChartBarsCnt  = jQuery( '.js-chartjs-bars' )[0].getContext( '2d' ),
         $dashChartLinesCnt = jQuery( '.js-chartjs-lines' )[0].getContext( '2d' );
@@ -156,48 +202,6 @@ $(document).ready(function(e) {
         data: $dashChartLinesData,
     });
 });
-
-//异步删除
-function deletedepart(id) {
-	$.alert({
-		title: '温馨提示',
-		content: '确认要删除吗?',
-		buttons: {
-			confirm: {
-				text: '确认',
-				btnClass: 'btn-primary',
-				action: function(){
-					//动作,delete请求
-					$.post("/depart/"+id,"_method=delete",function (result) {
-						if(result.code==200){
-							//刷新页面
-							lightyear.loading('show');
-							setTimeout(function() {
-								lightyear.loading('hide');
-								//lightyear.url('http://127.0.0.1:8080/depart/list/1/5');
-								lightyear.notify('删除成功，页面即将自动列表页面~', 'success', 3000);
-								//刷新页面
-								location.reload();
-							}, 1e3);
-						}else{
-							lightyear.loading('show');
-							setTimeout(function() {
-								lightyear.loading('hide');
-								lightyear.notify('删除失败,稍后再试~', 'danger', 100);
-							}, 1e3);
-						}
-					});
-				}
-			},
-			cancel: {
-				text: '取消',
-				action: function () {
-
-				}
-			}
-		}
-	});
-}
 </script>
 </body>
 </html>

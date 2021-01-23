@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
-<title>首页 - 光年(角色添加)OA管理系统</title>
+<title>首页 - 光年(添加学科)OA管理系统</title>
 <link rel="icon" href="/favicon.ico" type="image/ico">
 <meta name="keywords" content="LightYear,光年,后台模板,后台管理系统,光年HTML模板">
 <meta name="description" content="LightYear是一个基于Bootstrap v3.3.7的后台管理系统的HTML模板。">
@@ -24,7 +24,6 @@
       <!--头部信息-->
       <div th:replace="@{commons/head}::header"></div>
       <!--End 头部信息-->
-    
     <!--页面主要内容-->
     <main class="lyear-layout-content">
       
@@ -34,32 +33,42 @@
 		<div class="col-lg-12">
 			<div class="card">
 				<div class="card-header text-center">
-					更新角色
+					新增学科
 				</div>
 				<div class="card-body">
-					<form class="form-horizontal" action="role_list.html" method="get">
+					<form class="form-horizontal" action="sub_list.html" method="get">
 					  <div class="form-group">
-						<label class="col-md-3 control-label" for="example-hf-role">角色名称</label>
+						<label class="col-md-3 control-label" for="example-hf-day">学科名称</label>
 						<div class="col-md-7">
-						  <input class="form-control" type="text" id="example-hf-role" name="roleName">
+						  <input class="form-control" type="text" id="example-hf-day" placeholder="学科名称">
 						</div>
 					  </div>
 					  <div class="form-group">
-						<label class="col-md-3 control-label">是否有效</label>
+						<label class="col-md-3 control-label" for="example-hf-hire">成立日期</label>
 						<div class="col-md-7">
-						  <label class="radio-inline" for="example-inline-radio1">
-						    <input type="radio" id="example-inline-radio1" name="example-inline-radios" value="option1">
-						    有效
-						  </label>
-						  <label class="radio-inline" for="example-inline-radio2">
-						    <input type="radio" id="example-inline-radio2" name="example-inline-radios" value="option2">
-						    无效
-						  </label>
+						  <input class="form-control" type="date" id="example-hf-hire">
 						</div>
+					  </div>
+					  <div class="form-group">
+						<label class="col-md-3 control-label" for="example-hf-qq">学科周期</label>
+						<div class="col-md-7">
+						  <input class="form-control" type="text" id="example-hf-qq" placeholder="学科周期">
+						</div>
+					  </div>
+					  <div class="form-group">
+						  <label class="col-md-3 control-label" for="example-manager">学科类型</label>
+						  <div class="col-md-7">
+							<select style="padding: 10px 0;" class="form-control" id="example-manager" size="1">
+							  <option value="0">请选择</option>
+							  <option value="1">精品课程</option>
+							  <option value="2">周末班</option>
+							  <option value="3">正式班</option>
+							</select>
+						  </div>
 					  </div>
 					  <div class="form-group">
 						<div class="col-md-9 col-md-offset-3">
-						  <button class="btn btn-lg btn-info" type="submit">更新</button>
+						  <button class="btn btn-primary" type="submit">新增学科</button>
 						</div>
 					  </div>
 					</form>

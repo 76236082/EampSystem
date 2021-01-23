@@ -38,6 +38,7 @@ public class SystemCodeUtils {
 
         // 保存生成的5位验证码
         request.getSession().setAttribute("sysCode", sysCode);
+        System.out.println("验证码:"+sysCode);
 
         // 验证码图片的生成
         // 定义图片的宽度和高度

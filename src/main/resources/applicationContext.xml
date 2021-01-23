@@ -24,7 +24,17 @@
         <property name="typeAliasesPackage" value="com.nifei.bean"/>
     <!-- 配置mapper.xml路径-->
         <property name="mapperLocations" value="classpath*:mappers/*.xml"/>
+        <property name="plugins">
+            <array>
+                <bean class="com.baomidou.mybatisplus.extension.plugins.PaginationInterceptor">
+                    <!-- COUNT SQL 解析.可以没有 -->
+                    <property name="countSqlParser" ref="countSqlParser"/>
+                </bean>
+            </array>
+        </property>
     </bean>
+
+
 
     <bean id="countSqlParser" class="com.baomidou.mybatisplus.extension.plugins.pagination.optimize.JsqlParserCountOptimize">
         <!-- 设置为 true 可以优化部分 left join 的sql -->

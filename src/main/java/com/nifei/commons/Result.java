@@ -17,13 +17,18 @@ public class Result {
     private Object data;
 
     //统一的请求成功（无返回值）
-    public static Result SUCCESS(){
+    public static Result success(){
         return new Result(ResultCode.SUCCESS.code,ResultCode.SUCCESS.msg);
     }
 
     //统一的请求成功（有返回值）
-    public static Result SUCCESS(Object data){
+    public static Result success(Object data){
         return new Result(ResultCode.SUCCESS.code,ResultCode.SUCCESS.msg,data);
+    }
+
+    //统一的请求失败（无返回值）
+    public static Result fail(ResultCode resultCode){
+        return new Result(resultCode.code,resultCode.msg);
     }
 
     public Result(Integer code, String msg) {

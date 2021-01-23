@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<body>
+
+
+<!--左侧导航-->
+<aside class="lyear-layout-sidebar" th:fragment="menus">
+
+    <!-- logo -->
+    <div id="logo" class="sidebar-header">
+        <a href="/index.html"><img src="/images/logo-sidebar.png" title="LightYear" alt="LightYear" /></a>
+    </div>
+    <div class="lyear-layout-sidebar-scroll">
+
+        <nav class="sidebar-main">
+            <ul class="nav nav-drawer">
+                <li class="nav-item active"> <a href="index.html"><i class="mdi mdi-home"></i> 办公首页</a> </li>
+                <li class="nav-item nav-item-has-subnav">
+                    <a href="javascript:void(0)"><i class="mdi mdi-image-filter-vintage"></i> 权限管理</a>
+                    <ul class="nav nav-subnav">
+                        <li> <a href="/page_role_list">用户角色</a> </li>
+                        <li> <a href="/page_role_add">添加角色</a> </li>
+                    </ul>
+                </li>
+                <li class="nav-item nav-item-has-subnav">
+                    <a href="#"><i class="mdi mdi-account-convert"></i> 考勤管理</a>
+                    <ul class="nav nav-subnav">
+                        <li> <a href="work_add.html">请假加班</a> </li>
+                        <li> <a href="work_list.html">我的记录</a> </li>
+                    </ul>
+                </li>
+                <li class="nav-item nav-item-has-subnav">
+                    <a href="javascript:void(0)"><i class="mdi mdi-counter"></i> 部门管理</a>
+                    <ul class="nav nav-subnav">
+                        <li> <a href="/depart/list/1/5">部门列表</a> </li>
+                        <li> <a href="/page_dept_add">新增部门</a> </li>
+                    </ul>
+                </li>
+                <li class="nav-item nav-item-has-subnav">
+                    <a href="javascript:void(0)"><i class="mdi mdi-account-settings"></i> 员工管理</a>
+                    <ul class="nav nav-subnav">
+                        <li> <a href="/emp/list/1/5">员工列表</a> </li>
+                        <li> <a href="/page_emp_add">员工新增</a> </li>
+                        <li> <a href="/page_emp_import">员工导入</a> </li>
+                    </ul>
+                </li>
+                <li class="nav-item nav-item-has-subnav">
+                    <a href="javascript:void(0)"><i class="mdi mdi-shovel"></i> 学科管理</a>
+                    <ul class="nav nav-subnav">
+                        <li> <a href="/page_sub_list">学科列表</a> </li>
+                        <li> <a href="/page_sub_add">学科新增</a> </li>
+                    </ul>
+                </li>
+                <li class="nav-item nav-item-has-subnav">
+                    <a href="javascript:void(0)"><i class="mdi mdi-face-profile"></i> 班级管理</a>
+                    <ul class="nav nav-subnav">
+                        <li> <a href="/page_class_list">班级列表</a> </li>
+                        <li> <a href="/page_class_add">班级新增</a> </li>
+                    </ul>
+                </li>
+                <li class="nav-item nav-item-has-subnav">
+                    <a href="javascript:void(0)"><i class="mdi mdi-trophy-variant"></i> 学员管理</a>
+                    <ul class="nav nav-subnav">
+                        <li> <a href="/page_stu_list">学员列表</a> </li>
+                        <li> <a href="/page_stu_add">学员新增</a> </li>
+                        <li> <a href="/page_stu_import">学员导入</a> </li>
+                    </ul>
+                </li>
+
+            </ul>
+        </nav>
+    </div>
+
+</aside>
+<!--End 左侧导航-->
+
+</body>
+</html>
